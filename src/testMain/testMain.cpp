@@ -9,16 +9,27 @@
 
 int main()
 {
-	int num = mftGetDevNum();
-	_tprintf(_T("num=%d\n"), num);
+	BOOL rv;
+	cc_msg msg;
 
-	BOOL rv = mftStart(0);
-	_tprintf(_T("rv=%d\n"), rv);
+	rv = mftStart();
+	if (rv == FALSE) {
+		_tprintf(_T("error: mftStart() failed...\n"));
+		return -1;
+	}
 
-
-	for (int i = 0; i < 3 * 60; ++i) {
+	mftSetKnobValue(0, 63);
+	for (int i = 0; i < 180 * 60; ++i) {
 		Sleep(15);
-		mftPeekMessage();
+		while (true) {
+			rv = mftPeekMessage(&msg);
+			if (rv == FALSE) break;
+			//mftDumpMessage(&msg);
+		}
+
+		for (int j = 1; j < 16; ++j) {
+			mftSetKnobValue(j, mftGetKnobValue(0));
+		}
 	}
 
 	mftStop();

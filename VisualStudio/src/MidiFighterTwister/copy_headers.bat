@@ -1,0 +1,1 @@
+copy MidiFighterTwister.h ..\..\include

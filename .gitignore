@@ -1,3 +1,16 @@
+Library
+UnityPackageManager
+Temp
+./MidiFighterTwister.csproj
+./MidiFighterTwister.sln
+
+*.pidb
+*.userprefs
+
 .vs
 _obj
 *.user
+
+
+.DS_Store
+Thumbs.db

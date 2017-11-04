@@ -34,6 +34,9 @@ int main()
 		for (int idx = 0; idx < 64; ++idx) {
 			if (mftIsUpdatedKnobValue(idx)) {
 				_tprintf(_T("knob idx=%d, val=%d\n"), idx, mftGetKnobValue(idx));
+
+				// color test
+				mftSetKnobColor(idx, mftGetKnobValue(idx));
 			}
 			if (mftIsUpdatedButtonValue(idx)) {
 				_tprintf(_T("button idx=%d, val=%d\n"), idx, mftGetButtonValue(idx));
